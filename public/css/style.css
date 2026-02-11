@@ -705,9 +705,11 @@ img {
         flex-direction: column-reverse;
     }
 }
+
 /* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: fixed;
     z-index: 2000;
     left: 0;
@@ -796,7 +798,7 @@ img {
     color: var(--text-color);
 }
 
-.article-body ul, 
+.article-body ul,
 .article-body ol {
     margin: 1rem 0;
     padding-left: 1.5rem;
@@ -811,3 +813,6 @@ img {
     cursor: pointer;
 }
 
+a {
+    color: red;
+}
