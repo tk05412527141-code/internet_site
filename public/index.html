@@ -24,6 +24,22 @@
 
 <body>
 
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="top-bar-contact">
+                <a href="tel:+902121234567"><i class="fas fa-phone-alt"></i> +90 (212) 123 45 67</a>
+                <a href="mailto:info@adalethukuk.com"><i class="fas fa-envelope"></i> info@adalethukuk.com</a>
+            </div>
+            <div class="top-bar-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container navbar-container">
@@ -111,23 +127,109 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container about-container">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                    alt="Hukuk Bürosu">
+    <!-- Categories Section -->
+    <section id="categories" class="section categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kategorilerimiz</h2>
+                <p>Hukuki uzmanlık alanlarımız ve hizmetlerimiz.</p>
             </div>
-            <div class="about-text">
-                <h2>Hakkımızda</h2>
-                <p>Adalet Hukuk Bürosu olarak, müvekkillerimize en yüksek standartlarda hukuki hizmet sunmayı ilke
-                    edindik. Tecrübeli kadromuzla, karmaşık hukuki süreçleri sizin için yönetiyor ve haklarınızı
-                    savunuyoruz.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> 20+ Yıllık Tecrübe</li>
-                    <li><i class="fas fa-check-circle"></i> Uzman Avukat Kadrosu</li>
-                    <li><i class="fas fa-check-circle"></i> Şeffaf Süreç Yönetimi</li>
-                </ul>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Genel Konular</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Hukuk</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>İmar Barışı</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-landmark"></i>
+                    <h3>Kamulaştırma</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Kat Mülkiyeti</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Parselasyon</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-hard-hat"></i>
+                    <h3>Ruhsat Ve İskan</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-comment-dots"></i>
+                    <h3>Uzun Lafın Kısası</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Yargı Kararıyla Serisi</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Yıkım Ve Para Cezaları</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (Slider) -->
+    <section id="gallery" class="section gallery" style="background-color: #f8fafc; padding: 4rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ofisimizden Kareler</h2>
+                <p>Çalışma ortamımızdan ve etkinliklerimizden görüntüler.</p>
+            </div>
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Ofis Toplantı Odası">
+                        <div class="slide-caption">
+                            <h3>Modern Toplantı Odalarımız</h3>
+                            <p>Müvekkillerimizle verimli görüşmeler için tasarlandı.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Hukuk Kütüphanesi">
+                        <div class="slide-caption">
+                            <h3>Geniş Hukuk Kütüphanesi</h3>
+                            <p>Güncel mevzuat ve içtihatlara anında erişim.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Ofis Çalışma Alanı">
+                        <div class="slide-caption">
+                            <h3>Profesyonel Çalışma Ortamı</h3>
+                            <p>Ekibimiz titizlikle çalışıyor.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Adalet Heykeli">
+                        <div class="slide-caption">
+                            <h3>Adalet ve Güven</h3>
+                            <p>Hukukun üstünlüğü ilkesiyle hareket ediyoruz.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                <!-- Dots -->
+                <div class="slider-dots"></div>
             </div>
         </div>
     </section>
@@ -335,34 +437,107 @@
                         tüm standart formlara bu linkten ulaşılabilir:
                         <a
                             href="https://www.mevzuat.gov.tr/mevzuatmetin/yonetmelik/7.5.16849-Ek.zip">https://www.mevzuat.gov.tr/mevzuatmetin/yonetmelik/7.5.16849-Ek.zip</a>
+
+
+                    <h4>SALT ÇOĞUNLUK – PAY SATIŞI – YAPI RUHSATI BAĞININ YENİDEN KURULMASI</h4>
+                    <p>Yeni düzenleme, çoğunluk kararı, tebligat, pay satışı ve ruhsat süreçlerini artık birbirinden
+                        kopuk
+                        adımlar olarak değil, tek bir kesintisiz usul zinciri olarak ele almış; böylece ruhsat
+                        aşamasında
+                        eksik tebligat veya işletilmemiş 15/A süreci nedeniyle dönüşümün kilitlenmesi ihtimalini ortadan
+                        kaldırmıştır. Artık salt çoğunluk kararı tek başına yeterli değildir: Karara katılmayan
+                        maliklere
+                        usule uygun tebligat yapılması, tebligatta kararın içeriği ile teklifin incelenebileceği yerin
+                        açıkça gösterilmesi ve 15/A sürecinin (karara katılmayan payların satışına ilişkin zorunlu
+                        prosedürün) eksiksiz işletilmesi şarttır. Bu işlemler tamamlandıktan sonra Müdürlük bir “ön
+                        inceleme
+                        yazısı” düzenler; bu yazı, çoğunluğun sağlandığını ve tüm tebligatın mevzuata uygun olduğunu
+                        teyit
+                        eder. Ruhsat makamı bu yazı gelmeden ruhsat düzenleyemez; böylece idare, eksiksiz, hukuken
+                        geçerli
+                        ve denetlenmiş bir dosyaya dayanarak işlem yapmış olur. Sonuç olarak dönüşüm süreci ilk kez
+                        ruhsata
+                        kadar uzanan tekil, izlenebilir ve güvenli bir hukuki akışa kavuşmuş; azınlık maliklerin
+                        tebligat
+                        eksikliği üzerinden süreci duraklatma imkânı da fiilen sona ermiştir.</p>
+
+                    <h4>ARSA SATIŞI – KAMUYA ÖNCELİK – SÖZLEŞME İLİŞKİSİ</h4>
+                    <p>Yeni düzenleme ile riskli yapının yıkılmasından sonra arsa haline gelen taşınmazın satışına karar
+                        verilmesi halinde, satışa konu taşınmazın öncelikle kamuya (Bakanlık, bağlı kurumlar, ilgili
+                        idare,
+                        TOKİ) teklif edilmesine ilişkin zorunluluğu devam ettirmiştir. Bu nedenle maliklerin üçüncü
+                        kişilerle doğrudan satış yapması mümkün değildir ve satış sırası tamamen kamuya tekliften
+                        başlar.
+                        Kamu payı satın alırsa, malikle daha sonra 14. madde kapsamında konut/işyeri sözleşmesi
+                        yapılabileceği hükme bağlanmış; böylece satış-sözleşme ilişkisi tek çizgide birleştirilmiştir.
+                        Ancak
+                        kamu alım yapmazsa izlenecek yol yeni düzenlemede de gösterilmemiş, bu boşluk uygulamada yorum
+                        gerektiren bir alan olarak bırakılmıştır. Bu çerçeve, satış sürecinin kontrolünü tamamen kamuya
+                        vererek hem standart bir usul oluşturmuş hem de pay satışının muhatabını netleştirmiştir.</p>
+
+                    <h4>RİSKLİ YAPI PARSELLERİNDE TEVHİT–İFRAZ SONRASI 6306 KAPSAMININ BELİRLENMESİ</h4>
+                    <p>Yeni düzenleme, tevhit ve ifraz işlemlerinden sonra hangi parselin 6306 kapsamına tabi olacağı
+                        konusundaki eski belirsizliği gidererek, riskli yapı şerhinin sadece riskli yapının bulunduğu
+                        parselde devam edeceğini; diğer parsellerden ise şerhin kaldırılacağını açıkça hükme
+                        bağlamıştır.
+                        Böylece bir parsel ikiye bölündüğünde artık tüm yeni parsellerin riskli kabul edilmesi gibi
+                        uygulamada karışıklığa yol açan durumlar ortadan kalkmış; hem belediyeler hem tapu müdürlükleri
+                        hem
+                        de malikler için “kısıtlama hangi parselde sürer?” sorusu netleşmiştir. Bu değişiklik, riskli
+                        yapı
+                        şerhinin etkisini sadece gerçek etki alanıyla sınırlayarak hem gereksiz kısıtlamaları hem de
+                        ruhsat–tasarım süreçlerindeki gecikmeleri ortadan kaldırmayı amaçlayan isabetli bir teknik
+                        düzeltmedir.</p>
+
+                    <h4>TAPU HARÇ VE ÜCRET MUAFİYETİNDE YENİ ÇERÇEVE</h4>
+                    <p>Önceki düzenlemede tapu harç ve ücret muafiyeti sadece tevhit işlemleri için öngörülmüş; imar
+                        hakkı başka bir parsele aktarıldığında muafiyetin uygulanıp uygulanmayacağı belirsiz bırakıldığı
+                        için tapu müdürlükleri arasında farklı uygulamalar ortaya çıkmıştı. Yeni düzenleme, bu boşluğu
+                        gidererek hem tevhit hem de imar hakkı aktarımı hâllerini kapsama almış ve muafiyeti riskli
+                        parsel alanının, tevhit sonrası oluşan ya da imar hakkı taşınan yeni parsel alanına oranı kadar
+                        uygulanacak şekilde netleştirmiştir.</p>
+
+                    <h4>UYGULAMA ALANI DIŞINDA YAPILAŞMA VE İMAR HAKKI AKTARIMINA GETİRİLEN DEĞİŞİKLİK</h4>
+                    <p>Önceki düzenleme, zeminden veya afet riskinden dolayı yapılaşmaya kapalı hâle gelen parsellerde
+                        yeni yapının başka bir yerde inşa edilebileceğini söylemekle yetiniyor; 6306 sayılı Kanuna
+                        dayalı rejiminin devreye girip girmeyeceği hususunu belirsiz kalıyordu. Yeni düzenleme ise bu
+                        eksik halkayı tamamlayarak, imar hakkı aktarımı nedeniyle 6306 sayılı Kanuna dayalı rejimin
+                        nasıl uygulanacağını açık ve izlenebilir kurallara bağlamıştır: Riskli parselin imar hakkı başka
+                        bir parsele taşındığında; ancak tüm maliklerin aynı parselde şuyulandırılması ve o parseldeki
+                        diğer maliklerin açık muvafakati ile yeni parseldeki uygulamalar 6306 rejimi kapsamında
+                        yürütülür. Böyle bir durumda 6306 sayılı Kanun’dan kaynaklanan hakların uygulama alanı dışındaki
+                        parselde kullanılacağına dair, uygulama alanının bulunduğu ildeki Müdürlükten yazı alınır. Bu
+                        sistem, imar hakkı aktarımında 6306 sayılı Kanuna dayalı rejiminin uygulanmasına ilişkin
+                        süreçleri hukuki güvenceye bağlanmıştır.</p>
+
+                    <h4> PAY SATIŞININ YENİLENMESİ USULÜNDEKİ DEĞİŞİKLİK</h4>
+                    <p>Önceki düzenlemede ilk satış sonuçsuz kaldığında sonraki satışın yeri, zamanı ve usulü çoğu zaman
+                        yalnızca huzurda belirleniyor ve duyuru çoğunlukla tapu ilan panosuna asılan bir yazıyla sınırlı
+                        kalıyordu. Yeni düzenleme bu dağınıklığı gidererek, tekrar satışın ancak arsa payı salt
+                        çoğunluğunun talebiyle yapılacağını, satışın yer–gün–saatini Müdürlüğün belirleyeceğini, her
+                        yenileme için EK-13 formunun zorunlu olacağını, ilanların Müdürlük/İdare yayın araçlarıyla ve 15
+                        gün süreyle ilân panosunda yapılacağını ve tüm maliklere e-Devlet üzerinden bildirim
+                        yapılacağını açık bir sisteme bağladı. Böylece hem duyurunun ispatı güçlendi hem de satış
+                        yenilemesinin çoğunluk iradesine bağlı olduğu netleşti. Ancak düzenleme, çoğunluk satışın
+                        devamını talep etmezse hissenin üçüncü kişilere nasıl ve hangi sırayla sunulacağı hususunda
+                        sessiz kalmakta; bu da 6306 sayılı Kanun’un 6. maddesi ile Yönetmeliğin 15/A hükmünün (üçüncü
+                        kişilere satış usulünü düzenleyen norm) birlikte yorumlanmasını gerektiren dar ama önemli bir
+                        boşluk bırakmaktadır.</p>
+
+                    <h4>TAPU HARÇ VE ÜCRET MUAFİYETİNDE YENİ ÇERÇEVE</h4>
+                    <p>Önceki düzenlemede tapu harç ve ücret muafiyeti sadece tevhit işlemleri için öngörülmüş; imar
+                        hakkı başka bir parsele aktarıldığında muafiyetin uygulanıp uygulanmayacağı belirsiz bırakıldığı
+                        için tapu müdürlükleri arasında farklı uygulamalar ortaya çıkmıştı. Yeni düzenleme, bu boşluğu
+                        gidererek hem tevhit hem de imar hakkı aktarımı hâllerini kapsama almış ve muafiyeti riskli
+                        parsel alanının, tevhit sonrası oluşan ya da imar hakkı taşınan yeni parsel alanına oranı kadar
+                        uygulanacak şekilde netleştirmiştir. Böylece aktarım yapılan projeler gereksiz bir mali yükten
+                        kurtulmuş, ülke genelinde uygulama birliği sağlanmış ve dönüşüm süreçleri hem daha öngörülebilir
+                        hem de daha yapılabilir hâle gelmiştir. Düzenlemenin özü şudur: Riskli yapının hakkı nereye
+                        taşınırsa, muafiyet de oraya taşınır.</p>
+
+
+
                 </div>
-
-                <h4>SALT ÇOĞUNLUK – PAY SATIŞI – YAPI RUHSATI BAĞININ YENİDEN KURULMASI</h4>
-                <p>Yeni düzenleme, çoğunluk kararı, tebligat, pay satışı ve ruhsat süreçlerini artık birbirinden
-                    kopuk adımlar olarak değil, tek bir kesintisiz usul zinciri olarak ele almış; böylece ruhsat
-                    aşamasında eksik tebligat veya işletilmemiş 15/A süreci nedeniyle dönüşümün kilitlenmesi
-                    ihtimalini ortadan kaldırmıştır.</p>
-
-                <h4>ARSA SATIŞI – KAMUYA ÖNCELİK – SÖZLEŞME İLİŞKİSİ</h4>
-                <p>Yeni düzenleme ile riskli yapının yıkılmasından sonra arsa haline gelen taşınmazın satışına karar
-                    verilmesi halinde, satışa konu taşınmazın öncelikle kamuya (Bakanlık, bağlı kurumlar, ilgili
-                    idare, TOKİ) teklif edilmesine ilişkin zorunluluğu devam ettirmiştir. Bu nedenle maliklerin
-                    üçüncü kişilerle doğrudan satış yapması mümkün değildir ve satış sırası tamamen kamuya tekliften
-                    başlar.</p>
-
-                <h4>RİSKLİ YAPI PARSELLERİNDE TEVHİT–İFRAZ SONRASI 6306 KAPSAMININ BELİRLENMESİ</h4>
-                <p>Yeni düzenleme, tevhit ve ifraz işlemlerinden sonra hangi parselin 6306 kapsamına tabi olacağı
-                    konusundaki eski belirsizliği gidererek, riskli yapı şerhinin sadece riskli yapının bulunduğu
-                    parselde devam edeceğini; diğer parsellerden ise şerhin kaldırılacağını açıkça hükme
-                    bağlamıştır.</p>
-
-                <h4>TAPU HARÇ VE ÜCRET MUAFİYETİNDE YENİ ÇERÇEVE</h4>
-                <p>Önceki düzenlemede tapu harç ve ücret muafiyeti sadece tevhit işlemleri için öngörülmüş; imar
-                    hakkı başka bir parsele aktarıldığında muafiyetin uygulanıp uygulanmayacağı belirsiz bırakıldığı
-                    için tapu müdürlükleri arasında farklı uygulamalar ortaya çıkmıştı. Yeni düzenleme, bu boşluğu
-                    gidererek hem tevhit hem de imar hakkı aktarımı hâllerini kapsama almış ve muafiyeti riskli
-                    parsel alanının, tevhit sonrası oluşan ya da imar hakkı taşınan yeni parsel alanına oranı kadar
-                    uygulanacak şekilde netleştirmiştir.</p>
             </div>
         </div>
 
@@ -629,17 +804,91 @@
         </div>
     </section>
 
-    <!-- Simple Footer -->
-    <footer class="footer-simple">
-        <div class="container footer-bottom">
-            <p>&copy; 2026 Adalet Hukuk Bürosu. Tüm hakları saklıdır.</p>
-            <div class="footer-social-simple">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="#" class="footer-logo">
+                    <img src="img/avukat_logo_2000x2000.png" alt="Adalet Hukuk"
+                        style="height: 60px; filter: brightness(0) invert(1);">
+                </a>
+                <p class="footer-bio">
+                    Adalet Hukuk Bürosu, uzman kadrosuyla hukukun her alanında müvekkillerine güvenilir, şeffaf ve sonuç
+                    odaklı çözümler sunmaktadır.
+                </p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Hızlı Erişim</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Ana Sayfa</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> Hakkımızda</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Uzmanlık Alanları</a></li>
+                    <li><a href="#blog"><i class="fas fa-chevron-right"></i> Makaleler</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> KVKK Aydınlatma Metni</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Uzmanlık Alanları</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Ceza Hukuku</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Aile Hukuku</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> İmar ve Gayrimenkul</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Ticaret Hukuku</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> İş Hukuku</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Yabancılar Hukuku</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>İletişim</h3>
+                <ul class="footer-contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Adalet Mahallesi, Hukuk Caddesi No: 1, Kat: 3, Beşiktaş / İstanbul</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span><a href="tel:+902121234567">+90 (212) 123 45 67</a></span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span><a href="mailto:info@adalethukuk.com">info@adalethukuk.com</a></span>
+                    </li>
+                    <li>
+                        <i class="fab fa-whatsapp"></i>
+                        <span><a href="https://wa.me/905551234567">+90 (555) 123 45 67</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2026 Adalet Hukuk Bürosu. Tüm hakları saklıdır.</p>
+                <div class="footer-legal">
+                    <p>Bu site Türkiye Barolar Birliği'nin Meslek Kurallarına uygun olarak hazırlanmıştır.</p>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/905551234567" target="_blank" class="float-btn whatsapp-btn" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+902121234567" class="float-btn phone-btn" aria-label="Hemen Ara">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
 
     <script src="js/app.js"></script>
 </body>
