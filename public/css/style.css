@@ -1140,3 +1140,86 @@ img {
     border-top: 1px solid #eee;
     margin-top: 1.5rem;
 }
+
+/* Full Article Modal Styles */
+.modal-full-article {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.back-to-list-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    transition: var(--transition);
+}
+
+.back-to-list-btn i {
+    margin-right: 0.5rem;
+}
+
+.back-to-list-btn:hover {
+    color: var(--secondary-color);
+    transform: translateX(-5px);
+}
+
+.full-article-content h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.full-article-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+.full-article-content ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.full-article-content li {
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.full-article-content strong {
+    color: var(--secondary-color);
+}
+
+/* Ensure modal body is scrollable for long articles */
+#modal-body-content {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 10px;
+    /* Space for scrollbar */
+}
+
+/* Custom Scrollbar for Modal */
+#modal-body-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#modal-body-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#modal-body-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+#modal-body-content::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
