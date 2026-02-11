@@ -34,7 +34,8 @@
                 <li><a href="#home">Ana Sayfa</a></li>
                 <li><a href="#services">Uzmanlık Alanları</a></li>
                 <li><a href="#about">Hakkımızda</a></li>
-                <li><a href="#contact" class="btn-primary">Randevu Al</a></li>
+                <li><a href="#blog">Makaleler</a></li>
+                <li><a href="#contact" class="btn-primary">İletişim</a></li>
             </ul>
         </div>
     </nav>
@@ -135,21 +136,80 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact" class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <h3>Adalet<span>Hukuk</span></h3>
-                <p>Hukukun üstünlüğü ilkesiyle.</p>
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>İletişim</h2>
+                <p>Hukuki danışmanlık için bize ulaşın.</p>
             </div>
-            <div class="footer-social">
+            <div class="contact-container">
+                <div class="contact-form-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Adınız Soyadınız" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="E-posta Adresiniz" required>
+                        </div>
+                        <div class="form-group">
+                            <select>
+                                <option value="">Konu Seçiniz</option>
+                                <option value="ceza">Ceza Hukuku</option>
+                                <option value="aile">Aile Hukuku ve Boşanma</option>
+                                <option value="ticaret">Ticaret ve Şirketler Hukuku</option>
+                                <option value="imar">İmar ve Gayrimenkul</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Mesajınız" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+                <div class="contact-info-wrapper">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Adres</h4>
+                            <p>Adalet Mahallesi, Hukuk Caddesi No: 1, Kat: 3<br>İstanbul, Türkiye</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefon</h4>
+                            <p>+90 (212) 123 45 67</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>E-posta</h4>
+                            <p>info@adalethukuk.com</p>
+                        </div>
+                    </div>
+                    <!-- Google Maps Placeholder -->
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192697.7932766627!2d28.872096739857644!3d41.00549580436949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1689252345678!5m2!1str!2str"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer class="footer-simple">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Adalet Hukuk Bürosu. Tüm hakları saklıdır.</p>
+            <div class="footer-social-simple">
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-facebook"></i></a>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Adalet Hukuk Bürosu. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
