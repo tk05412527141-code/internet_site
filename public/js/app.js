@@ -352,57 +352,58 @@ function showCategoryModal(categoryTitle, articles) {
 
 
 // --- BLOG MODAL ÖZELLİĞİ (Existing) ---
-const modal = document.getElementById('blog-modal');
-const modalBody = document.getElementById('modal-body-content');
-const closeModalSpan = document.querySelector('.close-modal');
-const readMoreButtons = document.querySelectorAll('.read-more');
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('blog-modal');
+    const modalBody = document.getElementById('modal-body-content');
+    const closeModalSpan = document.querySelector('.close-modal');
+    const readMoreButtons = document.querySelectorAll('.read-more');
 
-// "Devamını Oku" butonlarına tıklama olayı
-readMoreButtons.forEach(button => {
-    button.addEventListener('click', function (e) {
-        e.preventDefault();
-        const articleId = this.getAttribute('data-id');
-        const articleContent = document.getElementById(articleId).innerHTML;
+    // "Devamını Oku" butonlarına tıklama olayı
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            const articleId = this.getAttribute('data-id');
+            const articleContent = document.getElementById(articleId).innerHTML;
 
-        modalBody.innerHTML = articleContent;
-        modal.style.display = 'block';
+            modalBody.innerHTML = articleContent;
+            modal.style.display = 'block';
 
-        // Küçük bir gecikmeyle opacity transition'ı tetikle
-        setTimeout(() => {
-            modal.classList.add('show');
-        }, 10);
+            // Küçük bir gecikmeyle opacity transition'ı tetikle
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
 
-        // Body scroll'u kilitle
-        document.body.style.overflow = 'hidden';
+            // Body scroll'u kilitle
+            document.body.style.overflow = 'hidden';
+        });
     });
-});
 
-// Modalı kapatma fonksiyonu
-function closeModal() {
-    modal.classList.remove('show');
-    setTimeout(() => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Scroll'u geri aç
-    }, 300); // Transition süresi kadar bekle
-}
-
-// Çarpı işaretine basınca kapat
-if (closeModalSpan) {
-    closeModalSpan.addEventListener('click', closeModal);
-}
-
-// Modal dışına tıklayınca kapat
-window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        closeModal();
+    // Modalı kapatma fonksiyonu
+    function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Scroll'u geri aç
+        }, 300); // Transition süresi kadar bekle
     }
-});
 
-// ESC tuşuna basınca kapat
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modal.classList.contains('show')) {
-        closeModal();
+    // Çarpı işaretine basınca kapat
+    if (closeModalSpan) {
+        closeModalSpan.addEventListener('click', closeModal);
     }
-});
+
+    // Modal dışına tıklayınca kapat
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    // ESC tuşuna basınca kapat
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
 
 });
