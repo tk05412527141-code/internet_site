@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="img/avukat_logo_2000x2000.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bilgin Hukuk Bürosu - Uzmanlık Alanlarımız">
+    <title>Bilgin Hukuk Bürosu | Uzmanlık Alanları</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Add padding to account for fixed navbar on subpages */
+        .page-content {
+            padding-top: 100px;
+            min-height: 80vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="top-bar-contact">
+                <a href="tel:+902121234567"><i class="fas fa-phone-alt"></i> +90 (212) 123 45 67</a>
+                <a href="mailto:info@adalethukuk.com"><i class="fas fa-envelope"></i> info@adalethukuk.com</a>
+            </div>
+            <div class="top-bar-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <img src="img/avukat_logo_2000x2000.png" alt="Adalet Hukuk Logo" class="logo-image">
+            </a>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="services.html" class="active">Uzmanlık Alanları</a></li>
+                <li><a href="blog.html">Makaleler</a></li>
+                <li><a href="team.html">Ekibimiz</a></li>
+                <li><a href="contact.html" class="btn-primary">İletişim</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Temayı Değiştir">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <!-- Services Section -->
+        <section id="services" class="section services" style="padding-top: 2rem;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Uzmanlık Alanlarımız</h2>
+                    <p>Geniş kapsamlı hukuki hizmetlerimizle yanınızdayız.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Ceza Hukuku</h3>
+                        <p>Soruşturma ve kovuşturma aşamalarında profesyonel savunma hizmeti.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Aile Hukuku</h3>
+                        <p>Boşanma, velayet, nafaka ve mal paylaşımı davalarında uzman destek.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Ticaret Hukuku</h3>
+                        <p>Şirketler hukuku, sözleşmeler ve ticari uyuşmazlıkların çözümü.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3>İmar Hukuku</h3>
+                        <p>İmar planları, ruhsat süreçleri ve imar barışı konularında danışmanlık.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Kentsel Dönüşüm</h3>
+                        <p>Riskli yapı tespiti, bina güçlendirme ve yeniden inşa süreçleri.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-box">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Gayrimenkul Hukuku</h3>
+                        <p>Tapu iptal ve tescil, kamulaştırma ve kira davaları.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section (Optional to include here, but fits well with services) -->
+        <section id="categories" class="section categories">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Kategorilerimiz</h2>
+                    <p>Hukuki uzmanlık alanlarımız ve hizmetlerimiz.</p>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Genel Konular</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Hukuk</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-file-contract"></i>
+                        <h3>İmar Barışı</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-landmark"></i>
+                        <h3>Kamulaştırma</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-building"></i>
+                        <h3>Kat Mülkiyeti</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Parselasyon</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-hard-hat"></i>
+                        <h3>Ruhsat Ve İskan</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-comment-dots"></i>
+                        <h3>Uzun Lafın Kısası</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-gavel"></i>
+                        <h3>Yargı Kararıyla Serisi</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Yıkım Ve Para Cezaları</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">
+                    <img src="img/avukat_logo_2000x2000.png" alt="Adalet Hukuk"
+                        style="height: 60px; filter: brightness(0) invert(1);">
+                </a>
+                <p class="footer-bio">
+                    Adalet Hukuk Bürosu, uzman kadrosuyla hukukun her alanında müvekkillerine güvenilir, şeffaf ve sonuç
+                    odaklı çözümler sunmaktadır.
+                </p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Hızlı Erişim</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Ana Sayfa</a></li>
+                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Uzmanlık Alanları</a></li>
+                    <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Makaleler</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> İletişim</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> KVKK Aydınlatma Metni</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Uzmanlık Alanları</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Ceza Hukuku</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Aile Hukuku</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> İmar ve Gayrimenkul</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Ticaret Hukuku</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> İş Hukuku</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Yabancılar Hukuku</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>İletişim</h3>
+                <ul class="footer-contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Adalet Mahallesi, Hukuk Caddesi No: 1, Kat: 3, Beşiktaş / İstanbul</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span><a href="tel:+902121234567">+90 (212) 123 45 67</a></span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span><a href="mailto:info@adalethukuk.com">info@adalethukuk.com</a></span>
+                    </li>
+                    <li>
+                        <i class="fab fa-whatsapp"></i>
+                        <span><a href="https://wa.me/905551234567">+90 (555) 123 45 67</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2026 Adalet Hukuk Bürosu. Tüm hakları saklıdır.</p>
+                <div class="footer-legal">
+                    <p>Bu site Türkiye Barolar Birliği'nin Meslek Kurallarına uygun olarak hazırlanmıştır.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/905551234567" target="_blank" class="float-btn whatsapp-btn" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+902121234567" class="float-btn phone-btn" aria-label="Hemen Ara">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

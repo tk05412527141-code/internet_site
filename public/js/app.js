@@ -11,6 +11,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Theme Toggle Functionality
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = themeToggleBtn.querySelector('i');
+
+    // Check for saved user preference, if any, on load of the website
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        let theme = 'light';
+        if (document.documentElement.getAttribute('data-theme') !== 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            theme = 'dark';
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            document.documentElement.removeAttribute('data-theme'); // default to light
+            theme = 'light';
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+        localStorage.setItem('theme', theme);
+    });
+
     // Mobil Menü Aç/Kapa
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
@@ -53,81 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Gallery Slider Functionality
-    const sliderWrapper = document.querySelector('.slider-wrapper');
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dotsContainer = document.querySelector('.slider-dots');
 
-    if (sliderWrapper && slides.length > 0) {
-        let currentSlide = 0;
-        const totalSlides = slides.length;
-        let slideInterval;
-
-        // Create dots
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
-        });
-
-        const dots = document.querySelectorAll('.dot');
-
-        function updateSlider() {
-            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-            // Update dots
-            dots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlider();
-            resetTimer();
-        }
-
-        function resetTimer() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        // Event Listeners
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetTimer();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetTimer();
-        });
-
-        // Initialize Auto Slide
-        slideInterval = setInterval(nextSlide, 5000);
-
-        // Optional: Pause on hover
-        sliderWrapper.addEventListener('mouseenter', () => clearInterval(slideInterval));
-        sliderWrapper.addEventListener('mouseleave', () => resetTimer());
-    }
 });
 
 // Basit fade-in animasyon gözlemcisi
