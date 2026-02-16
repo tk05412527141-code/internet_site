@@ -13,6 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Hero Slider Functionality
+    const initHeroSlider = () => {
+        const slides = document.querySelectorAll('.hero-slide');
+        if (slides.length > 0) {
+            let currentSlide = 0;
+            const slideInterval = 5000; // 5 seconds
+
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, slideInterval);
+        }
+    };
+    initHeroSlider();
+
     // Theme Toggle Functionality
     const themeToggleBtn = document.getElementById('theme-toggle');
 
