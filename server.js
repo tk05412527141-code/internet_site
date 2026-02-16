@@ -44,9 +44,9 @@ app.use(limiter);
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Fallback route for SPA or basic error handling
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// 404 Handler
+app.use((req, res) => {
+    res.status(404).send('<h1>404 - Sayfa Bulunamadı</h1><p>Aradığınız sayfa mevcut değil. <a href="/">Ana Sayfaya Dön</a></p>');
 });
 
 app.listen(PORT, () => {
