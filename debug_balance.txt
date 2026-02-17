@@ -1,0 +1,2 @@
+DEBUG: Main block { from line 1 closed at line 552 col 1
+Error: Expected ')' to close '(' (from line 1), but found '}' at line 630 col 1

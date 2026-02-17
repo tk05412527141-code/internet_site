@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listContainer.innerHTML = '<p>Yükleniyor...</p>';
 
         try {
+            const response = await fetch('/api/articles');
             const articles = await response.json();
             window.currentArticles = articles; // Store for edit
 

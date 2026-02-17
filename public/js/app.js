@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /*
+
     // Mobil Menü Aç/Kapa
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    */
+
 
     // Basit fade-in animasyon gözlemcisi
     const observerOptions = {
@@ -523,78 +523,78 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 10);
             document.body.style.overflow = 'hidden';
         }
-    }
 
-    function closeModal() {
-        blogModal.classList.remove('show');
-        setTimeout(() => {
-            blogModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }, 300);
-    }
 
-    if (closeModalSpan) {
-        closeModalSpan.addEventListener('click', closeModal);
-    }
-
-    window.addEventListener('click', (event) => {
-        if (event.target === blogModal) {
-            closeModal();
+        function closeModal() {
+            blogModal.classList.remove('show');
+            setTimeout(() => {
+                blogModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
         }
-    });
 
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && blogModal.classList.contains('show')) {
-            closeModal();
+        if (closeModalSpan) {
+            closeModalSpan.addEventListener('click', closeModal);
         }
-    });
 
-} // End of if (blogModal)
-
-// --- Contact Form Logic ---
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Gönderiliyor...';
-        submitBtn.disabled = true;
-
-        const inputs = contactForm.querySelectorAll('input, select, textarea');
-        const name = inputs[0].value;
-        const email = inputs[1].value;
-        const subject = inputs[2].value;
-        const message = inputs[3].value;
-
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, subject, message })
-            });
-
-            if (response.ok) {
-                alert('Mesajınız başarıyla gönderildi!');
-                contactForm.reset();
-            } else {
-                const data = await response.json();
-                alert('Hata: ' + (data.error || 'Mesaj gönderilemedi.'));
+        window.addEventListener('click', (event) => {
+            if (event.target === blogModal) {
+                closeModal();
             }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Bir bağlantı hatası oluştu.');
-        } finally {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-}
+        });
 
-// --- Cookie Consent Banner ---
-const cookieBanner = document.createElement('div');
-cookieBanner.id = 'cookie-banner';
-cookieBanner.style.cssText = `
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && blogModal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+
+    } // End of if (blogModal)
+
+    // --- Contact Form Logic ---
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Gönderiliyor...';
+            submitBtn.disabled = true;
+
+            const inputs = contactForm.querySelectorAll('input, select, textarea');
+            const name = inputs[0].value;
+            const email = inputs[1].value;
+            const subject = inputs[2].value;
+            const message = inputs[3].value;
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, subject, message })
+                });
+
+                if (response.ok) {
+                    alert('Mesajınız başarıyla gönderildi!');
+                    contactForm.reset();
+                } else {
+                    const data = await response.json();
+                    alert('Hata: ' + (data.error || 'Mesaj gönderilemedi.'));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Bir bağlantı hatası oluştu.');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // --- Cookie Consent Banner ---
+    const cookieBanner = document.createElement('div');
+    cookieBanner.id = 'cookie-banner';
+    cookieBanner.style.cssText = `
         position: fixed;
         bottom: 0;
         left: 0;
@@ -607,24 +607,24 @@ cookieBanner.style.cssText = `
         display: none;
         box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
     `;
-cookieBanner.innerHTML = `
+    cookieBanner.innerHTML = `
         <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem;">
             <p style="margin: 0; font-size: 0.9rem;">Sitemizden en iyi şekilde faydalanabilmeniz için çerezler kullanılmaktadır. Sitemize giriş yaparak çerez kullanımını kabul etmiş sayılırsınız.</p>
             <button id="accept-cookies" style="background: var(--primary-color, #0a2540); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 2rem; cursor: pointer; font-weight: 600;">Kabul Et</button>
         </div>
     `;
-document.body.appendChild(cookieBanner);
+    document.body.appendChild(cookieBanner);
 
-const acceptBtn = document.getElementById('accept-cookies');
-if (!localStorage.getItem('cookiesAccepted')) {
-    cookieBanner.style.display = 'block';
-}
+    const acceptBtn = document.getElementById('accept-cookies');
+    if (!localStorage.getItem('cookiesAccepted')) {
+        cookieBanner.style.display = 'block';
+    }
 
-if (acceptBtn) {
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieBanner.style.display = 'none';
-    });
-}
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.style.display = 'none';
+        });
+    }
 
 });
