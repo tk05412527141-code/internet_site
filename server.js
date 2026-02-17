@@ -6,14 +6,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Security Middleware
+// Security Middleware
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.quilljs.com"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com", "https://cdn.quilljs.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
-            imgSrc: ["'self'", "data:", "https://images.unsplash.com"],
+            imgSrc: ["'self'", "data:", "https://images.unsplash.com", "https://i.ibb.co"],
             connectSrc: ["'self'"],
         },
     },
@@ -41,8 +42,104 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+// Middleware for parsing JSON bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
+
+// API Endpoints
+const fs = require('fs');
+const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
+
+// GET all articles
+app.get('/api/articles', (req, res) => {
+    fs.readFile(articlesFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Veri okunamadı' });
+        }
+        res.json(JSON.parse(data));
+    });
+});
+
+// POST new article (Simple Auth)
+app.post('/api/articles', (req, res) => {
+    const { title, date, content, password } = req.body;
+
+    // Simple password check
+    if (password !== 'admin123') {
+        return res.status(401).json({ error: 'Yetkisiz erişim' });
+    }
+
+    if (!title || !content) {
+        return res.status(400).json({ error: 'Başlık ve içerik zorunludur' });
+    }
+
+    fs.readFile(articlesFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Veri okunamadı' });
+        }
+
+        const articles = JSON.parse(data);
+        const newId = 'article-' + Date.now(); // Simple ID generation
+
+        articles[newId] = {
+            title,
+            date: date || new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }),
+            content
+        };
+
+        fs.writeFile(articlesFilePath, JSON.stringify(articles, null, 4), (err) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Veri kaydedilemedi' });
+            }
+            res.status(201).json({ message: 'Makale eklendi', id: newId });
+        });
+    });
+});
+
+// DELETE article
+app.delete('/api/articles/:id', (req, res) => {
+    const articleId = req.params.id;
+    // In a real app, we should authenticate here too. 
+    // For simplicity, we'll assume the client sends the password in headers or body, 
+    // but standard DELETE doesn't always have a body. 
+    // Let's use a query param or header for simple auth since we are using simple password auth.
+    // Or just check if the user is authorized (session based). 
+    // Given the current simple architecture, let's look for an Authorization header or similar.
+    // For now, let's keep it open or require a specific header.
+    const password = req.headers['x-admin-password'];
+
+    if (password !== 'admin123') {
+        return res.status(401).json({ error: 'Yetkisiz erişim' });
+    }
+
+    fs.readFile(articlesFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Veri okunamadı' });
+        }
+
+        let articles = JSON.parse(data);
+        if (!articles[articleId]) {
+            return res.status(404).json({ error: 'Makale bulunamadı' });
+        }
+
+        delete articles[articleId];
+
+        fs.writeFile(articlesFilePath, JSON.stringify(articles, null, 4), (err) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Veri kaydedilemedi' });
+            }
+            res.json({ message: 'Makale silindi' });
+        });
+    });
+});
 
 // 404 Handler
 app.use((req, res) => {

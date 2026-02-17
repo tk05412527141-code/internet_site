@@ -123,15 +123,90 @@ document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const articleId = urlParams.get('id');
 
-        if (articleId && window.articles && window.articles[articleId]) {
-            const article = window.articles[articleId];
-            document.getElementById('article-title').textContent = article.title;
-            document.getElementById('article-date').textContent = article.date;
-            document.getElementById('article-body').innerHTML = article.content;
-            document.title = `Bilgin Hukuk Bürosu | ${article.title}`;
-        } else {
-            document.getElementById('article-body').innerHTML = '<p>Makale bulunamadı.</p>';
+        if (articleId) {
+            fetch('/api/articles')
+                .then(response => response.json())
+                .then(articles => {
+                    if (articles && articles[articleId]) {
+                        const article = articles[articleId];
+                        document.getElementById('article-title').textContent = article.title;
+                        document.getElementById('article-date').textContent = article.date;
+                        document.getElementById('article-body').innerHTML = article.content;
+                        document.title = `Bilgin Hukuk Bürosu | ${article.title}`;
+                    } else {
+                        document.getElementById('article-body').innerHTML = '<p>Makale bulunamadı.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching articles:', error);
+                    document.getElementById('article-body').innerHTML = '<p>Makale yüklenirken bir hata oluştu.</p>';
+                });
         }
+    }
+
+    // --- Blog Page Logic ---
+    const blogArticlesContainer = document.getElementById('blog-articles-container');
+    if (blogArticlesContainer) {
+        fetch('/api/articles')
+            .then(response => response.json())
+            .then(articles => {
+                blogArticlesContainer.innerHTML = ''; // Clear loading message
+
+                // Convert object to array and reverse to show newest first (assuming keys are somewhat ordered or we sort by date)
+                // Since keys are article-timestamp for new ones, but article-1 etc for old, we might need robust sorting.
+                // For now, let's just reverse the keys if they are inserted in order. 
+                // Better: Sort by date if possible, but date format is string. 
+                // Let's just render them as is for now, maybe reverse.
+                const articleIds = Object.keys(articles).reverse();
+
+                if (articleIds.length === 0) {
+                    blogArticlesContainer.innerHTML = '<p>Henüz makale bulunmamaktadır.</p>';
+                    return;
+                }
+
+                articleIds.forEach(id => {
+                    const article = articles[id];
+                    // Create a plain text summary from HTML content
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = article.content;
+                    const textContent = tempDiv.textContent || tempDiv.innerText || "";
+                    const summary = textContent.substring(0, 150) + '...';
+
+                    const articleCard = `
+                        <article class="blog-card">
+                            <div class="blog-content">
+                                <div class="blog-date">${article.date}</div>
+                                <h3>${article.title}</h3>
+                                <p>${summary}</p>
+                                <a href="article-detail.html?id=${id}" class="read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    `;
+                    blogArticlesContainer.innerHTML += articleCard;
+                });
+
+                // Re-apply animations to new elements
+                const newCards = blogArticlesContainer.querySelectorAll('.blog-card');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                newCards.forEach(el => {
+                    el.classList.add('animate-on-scroll');
+                    el.style.transition = 'all 0.6s ease-out';
+                    observer.observe(el);
+                });
+
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+                blogArticlesContainer.innerHTML = '<p>Makaleler yüklenirken bir hata oluştu.</p>';
+            });
     }
 
     // --- General Topics Category Handling (kept for Services page) ---
