@@ -122,6 +122,19 @@
                     <input type="text" id="date" placeholder="Örn: 17 Şubat 2026" required>
                 </div>
                 <div class="form-group">
+                    <label for="category">Kategori</label>
+                    <select id="category" class="form-control"
+                        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.5rem;" required>
+                        <option value="Genel">Genel</option>
+                        <option value="Ceza Hukuku">Ceza Hukuku</option>
+                        <option value="Aile Hukuku">Aile Hukuku</option>
+                        <option value="İş Hukuku">İş Hukuku</option>
+                        <option value="Ticaret Hukuku">Ticaret Hukuku</option>
+                        <option value="Gayrimenkul Hukuku">Gayrimenkul Hukuku</option>
+                        <option value="İcra ve İflas Hukuku">İcra ve İflas Hukuku</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="editor">İçerik</label>
                     <!-- Create the editor container -->
                     <div id="editor"></div>

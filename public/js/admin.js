@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('add-article-form');
     const statusMessage = document.getElementById('status-message');
 
+    let currentEditingId = null; // Track if we are editing
+
     // Function to load and display articles
     async function loadArticles() {
         const listSection = document.getElementById('article-list-section');
@@ -17,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         listContainer.innerHTML = '<p>Yükleniyor...</p>';
 
         try {
-            const response = await fetch('/api/articles');
             const articles = await response.json();
+            window.currentArticles = articles; // Store for edit
 
             listContainer.innerHTML = '';
 
@@ -55,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td style="padding: 0.75rem;">${article.date}</td>
                     <td style="padding: 0.75rem;"><strong>${article.title}</strong></td>
                     <td style="padding: 0.75rem; text-align: right;">
+                        <button class="edit-btn" data-id="${id}" style="background: #ffc107; color: black; border: none; padding: 0.25rem 0.5rem; border-radius: 0.25rem; cursor: pointer; margin-right: 5px;">Düzenle</button>
                         <button class="delete-btn" data-id="${id}" style="background: #dc3545; color: white; border: none; padding: 0.25rem 0.5rem; border-radius: 0.25rem; cursor: pointer;">Sil</button>
                     </td>
                 `;
@@ -88,6 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             alert('Bir hata oluştu.');
                         }
                     }
+                });
+            });
+
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    editArticle(id);
                 });
             });
 
@@ -141,11 +152,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    function editArticle(id) {
+        const article = window.currentArticles[id];
+        if (!article) return;
+
+        document.getElementById('title').value = article.title;
+        document.getElementById('date').value = article.date;
+        document.getElementById('category').value = article.category || 'Genel';
+        quill.root.innerHTML = article.content;
+
+        currentEditingId = id;
+        document.querySelector('#add-article-form button[type="submit"]').textContent = 'Makaleyi Güncelle';
+        document.querySelector('h3').textContent = 'Makaleyi Düzenle';
+
+        // Scroll to form
+        document.getElementById('admin-panel').scrollIntoView({ behavior: 'smooth' });
+    }
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const title = document.getElementById('title').value;
         const date = document.getElementById('date').value;
+        const category = document.getElementById('category').value;
 
         // Get HTML content from Quill
         const content = quill.root.innerHTML;
@@ -160,24 +189,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const articleData = {
             title,
             date,
+            category,
             content,
             password: 'admin123' // Send password for server verification
         };
 
         try {
-            const response = await fetch('/api/articles', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(articleData)
-            });
+            let response;
+            if (currentEditingId) {
+                // Update existing
+                response = await fetch(`/api/articles/${currentEditingId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(articleData)
+                });
+            } else {
+                // Create new
+                response = await fetch('/api/articles', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(articleData)
+                });
+            }
 
             if (response.ok) {
-                statusMessage.textContent = 'Makale başarıyla eklendi!';
+                statusMessage.textContent = currentEditingId ? 'Makale güncellendi!' : 'Makale başarıyla eklendi!';
                 statusMessage.style.color = 'green';
                 form.reset();
                 quill.setContents([]); // Clear editor
+                currentEditingId = null;
+                document.querySelector('#add-article-form button[type="submit"]').textContent = 'Makaleyi Yayınla';
+                document.querySelector('h3').textContent = 'Yeni Makale Ekle';
                 loadArticles(); // Refresh list
             } else {
                 statusMessage.textContent = 'Hata oluştu. Lütfen tekrar deneyin.';

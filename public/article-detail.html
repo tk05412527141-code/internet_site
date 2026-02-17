@@ -158,6 +158,30 @@
                     <p>Makale içeriği yükleniyor, lütfen bekleyiniz...</p>
                 </div>
             </div>
+
+            <!-- Comments Section -->
+            <div id="comments-section" style="margin-top: 4rem; border-top: 1px solid #ddd; padding-top: 2rem;">
+                <h3>Yorumlar</h3>
+                <div id="comments-list" style="margin-bottom: 2rem;">
+                    <!-- Comments will be loaded here -->
+                    <p>Henüz yorum yapılmamış. İlk yorumu siz yapın!</p>
+                </div>
+
+                <h4>Yorum Yap</h4>
+                <form id="comment-form" style="background: #f8f9fa; padding: 1.5rem; border-radius: 0.5rem;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <input type="text" id="comment-name" placeholder="Adınız Soyadınız" required
+                            style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.5rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <textarea id="comment-text" rows="4" placeholder="Yorumunuz..." required
+                            style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.5rem; font-family: inherit;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer;">Yorum
+                        Gönder</button>
+                    <div id="comment-status" style="margin-top: 0.5rem;"></div>
+                </form>
+            </div>
         </div>
     </div>
 

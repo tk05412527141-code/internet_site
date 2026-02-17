@@ -52,6 +52,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // API Endpoints
 const fs = require('fs');
 const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
+const contactsFilePath = path.join(__dirname, 'data', 'contacts.json');
+const commentsFilePath = path.join(__dirname, 'data', 'comments.json');
 
 // GET all articles
 app.get('/api/articles', (req, res) => {
@@ -66,7 +68,7 @@ app.get('/api/articles', (req, res) => {
 
 // POST new article (Simple Auth)
 app.post('/api/articles', (req, res) => {
-    const { title, date, content, password } = req.body;
+    const { title, date, content, password, category } = req.body;
 
     // Simple password check
     if (password !== 'admin123') {
@@ -89,6 +91,7 @@ app.post('/api/articles', (req, res) => {
         articles[newId] = {
             title,
             date: date || new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }),
+            category: category || 'Genel',
             content
         };
 
@@ -137,6 +140,143 @@ app.delete('/api/articles/:id', (req, res) => {
                 return res.status(500).json({ error: 'Veri kaydedilemedi' });
             }
             res.json({ message: 'Makale silindi' });
+        });
+    });
+});
+
+// PUT update article
+app.put('/api/articles/:id', (req, res) => {
+    const articleId = req.params.id;
+    const { title, content, category, password } = req.body;
+
+    if (password !== 'admin123') {
+        return res.status(401).json({ error: 'Yetkisiz erişim' });
+    }
+
+    if (!title || !content) {
+        return res.status(400).json({ error: 'Başlık ve içerik zorunludur' });
+    }
+
+    fs.readFile(articlesFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Veri okunamadı' });
+        }
+
+        let articles = JSON.parse(data);
+        if (!articles[articleId]) {
+            return res.status(404).json({ error: 'Makale bulunamadı' });
+        }
+
+        articles[articleId] = {
+            ...articles[articleId],
+            title,
+            content,
+            category: category || articles[articleId].category || 'Genel'
+        };
+
+        fs.writeFile(articlesFilePath, JSON.stringify(articles, null, 4), (err) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Veri kaydedilemedi' });
+            }
+            res.json({ message: 'Makale güncellendi', article: articles[articleId] });
+        });
+    });
+});
+
+// POST contact form
+app.post('/api/contact', (req, res) => {
+    const { name, email, subject, message } = req.body;
+
+    if (!name || !email || !message) {
+        return res.status(400).json({ error: 'Lütfen tüm zorunlu alanları doldurun.' });
+    }
+
+    fs.readFile(contactsFilePath, 'utf8', (err, data) => {
+        let contacts = [];
+        if (!err && data) {
+            try {
+                contacts = JSON.parse(data);
+            } catch (e) {
+                contacts = [];
+            }
+        }
+
+        const newContact = {
+            id: Date.now(),
+            date: new Date().toISOString(),
+            name,
+            email,
+            subject,
+            message
+        };
+
+        contacts.push(newContact);
+
+        fs.writeFile(contactsFilePath, JSON.stringify(contacts, null, 4), (err) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Mesajınız kaydedilemedi.' });
+            }
+            res.status(201).json({ message: 'Mesajınız başarıyla alındı.' });
+        });
+    });
+});
+
+// GET comments for an article
+app.get('/api/articles/:id/comments', (req, res) => {
+    const articleId = req.params.id;
+    fs.readFile(commentsFilePath, 'utf8', (err, data) => {
+        if (err && err.code !== 'ENOENT') {
+            console.error(err);
+            return res.status(500).json({ error: 'Yorumlar okunamadı' });
+        }
+
+        const commentsData = data ? JSON.parse(data) : {};
+        const articleComments = commentsData[articleId] || [];
+        res.json(articleComments);
+    });
+});
+
+// POST comment
+app.post('/api/articles/:id/comments', (req, res) => {
+    const articleId = req.params.id;
+    const { name, text } = req.body;
+
+    if (!name || !text) {
+        return res.status(400).json({ error: 'İsim ve yorum zorunludur' });
+    }
+
+    fs.readFile(commentsFilePath, 'utf8', (err, data) => {
+        let commentsData = {};
+        if (!err && data) {
+            try {
+                commentsData = JSON.parse(data);
+            } catch (e) {
+                commentsData = {};
+            }
+        }
+
+        if (!commentsData[articleId]) {
+            commentsData[articleId] = [];
+        }
+
+        const newComment = {
+            id: Date.now(),
+            date: new Date().toLocaleDateString('tr-TR'),
+            name,
+            text
+        };
+
+        commentsData[articleId].push(newComment);
+
+        fs.writeFile(commentsFilePath, JSON.stringify(commentsData, null, 4), (err) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Yorum kaydedilemedi' });
+            }
+            res.status(201).json(newComment);
         });
     });
 });

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://adalethukuk.com/sitemap.xml
